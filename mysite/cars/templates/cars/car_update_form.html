@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {{ form.non_field_errors }}
+    <form method="POST" action="{% url 'car-update' car.pk %}">
+        {% csrf_token %}
+        {{ form.number.errors }}
+        <label>Номер</label>
+        <input type="text" name="number" value="{{ object.number }}">
+        {{ form.mark.errors }}
+        <label>Марка</label>
+        <input type="text" name="mark" value="{{ object.mark }}">
+        {{ form.model.errors }}
+        <label>Модель</label>
+        <input type="text" name="model" value="{{ object.model }}">
+        <button type="submit">Обновить</button>
+    </form>
+
+{% endblock %}

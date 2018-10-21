@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Don {% endblock %}</title>
+</head>
+<body>
+    {% block sidebar %}
+        <ul>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'home' %}">Главная</a></li>
+                <li><a href="{% url 'car-list' %}">Автомобили</a></li>
+                <li><a href="{% url 'profile-balance' %}">Оплата жку</a></li>
+                <li><a href="{% url 'password_change' %}">Изменить пароль</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            {% else %}
+                <li><a href="{% url 'password_reset' %}">Забыли пароль?</a></li>
+                <li><a href="{% url 'login' %}">Войти</a></li>
+            {% endif %}
+        </ul>
+    {% endblock %}
+
+    {% block content %}{% endblock %}
+</body>
+</html>
